@@ -1,0 +1,21 @@
+.image-gallery {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  
+  .image-container {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .image-container.featured {
+    transform: scale(1.2); /* Make the featured image larger */
+  }
+  
