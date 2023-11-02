@@ -237,6 +237,399 @@
 
 ///////////final code 1///////
 
+// import React, { useState } from "react";
+// import SortableList, { SortableItem } from "react-easy-sort";
+// import image1 from "../../images/image-1.webp";
+// import image2 from "../../images/image-2.webp";
+// import image3 from "../../images/image-3.webp";
+// import image4 from "../../images/image-4.webp";
+// import image5 from "../../images/image-5.webp";
+// import image6 from "../../images/image-6.webp";
+// import image7 from "../../images/image-7.webp";
+// import image8 from "../../images/image-8.webp";
+// import image9 from "../../images/image-9.webp";
+// import image10 from "../../images/image-10.jpeg";
+// import image11 from "../../images/image-11.jpeg";
+// import { FaCheckSquare } from 'react-icons/fa';
+// import { IoIosImages } from 'react-icons/io';
+// import Dropzone from "react-dropzone";
+// import './ImageGallery.css';
+
+// const ImageGallery = () => {
+//   const [items, setItems] = useState([
+//     { id: '1', image: image1, selected: false },
+//     { id: '2', image: image2, selected: false },
+//     { id: '3', image: image3, selected: false },
+//     { id: '4', image: image4, selected: false },
+//     { id: '5', image: image5, selected: false },
+//     { id: '6', image: image6, selected: false },
+//     { id: '7', image: image7, selected: false },
+//     { id: '8', image: image8, selected: false },
+//     { id: '9', image: image9, selected: false },
+//     { id: '10', image: image10, selected: false },
+//     { id: '11', image: image11, selected: false },
+//   ]);
+
+//   const [selectedItems, setSelectedItems] = useState([]);
+//   const [selectAll, setSelectAll] = useState(false);
+
+//   const toggleSelect = (id) => {
+//     const updatedItems = items.map((item) =>
+//       item.id === id ? { ...item, selected: !item.selected } : item
+//     );
+//     setItems(updatedItems);
+//     setSelectedItems(updatedItems.filter((item) => item.selected));
+//     setSelectAll(updatedItems.every((item) => item.selected));
+//   };
+
+//   const handleSelectAll = () => {
+//     const selectAllValue = !selectAll;
+//     setSelectAll(selectAllValue);
+//     const updatedItems = items.map((item) => ({ ...item, selected: selectAllValue }));
+//     setItems(updatedItems);
+//     setSelectedItems(selectAllValue ? items : []);
+//   };
+
+//   const onDrop = (acceptedFiles) => {
+//     const newItems = acceptedFiles.map((file) => ({
+//       id: String(Date.now()),
+//       image: URL.createObjectURL(file),
+//       selected: false,
+//     }));
+//     setItems([...items, ...newItems]);
+//   };
+
+//   const onDelete = () => {
+//     const filteredImages = items.filter((img) => !img.selected);
+//     setItems(filteredImages);
+//     setSelectedItems([]);
+//   };
+
+//   const onSortEnd = (oldIndex, newIndex) => {
+//     const newItems = [...items];
+//     const [movedItem] = newItems.splice(oldIndex, 1);
+//     newItems.splice(newIndex, 0, movedItem);
+//     setItems(newItems);
+//   };
+
+//   const showGalleryText = selectedItems.length === 0;
+
+
+//   return (
+//     <div className="container mx-auto bg-base-100 rounded-lg shadow-2xl p-10 m-10 py-15 w-full">
+//       {showGalleryText && (
+//         <h1 className="text-2xl font-bold mb-4 text-start ml-3 border-spacing-y-80">Gallery</h1>
+//       )}
+//       <div className="flex justify-between border-spacing-x-5 items-center mb-4">
+//         <div>
+//           {selectedItems.length > 0 && (
+//             <div className="flex items-center text-lg font-bold">
+//               <FaCheckSquare className="text-blue-600 borrder mx-3" />
+//               {selectedItems.length} Files Selected
+//             </div>
+//           )}
+//         </div>
+//         {selectedItems.length > 0 && (
+//           <button onClick={onDelete} className="text-red-600 font-bold">
+//             Delete Files
+//           </button>
+//         )}
+//       </div>
+//       {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"> */}
+//       <SortableList
+//         onSortEnd={onSortEnd}
+//         className="flex flex-wrap"
+//         draggedItemClassName="shadow-md p-2 m-2 cursor-pointer border"
+//       >
+//         {items.map(({ id, image, selected }) => (
+//           <SortableItem key={id}>
+
+//             <div className="relative flex flex-shrink-0 m-3 cursor-grab">
+//               <input
+//                 type="checkbox"
+//                 checked={selected}
+//                 onChange={() => toggleSelect(id)}
+//                 className="absolute w-5 top-0 left-0 mt-2 ml-2 z-10"
+//               />
+//               <img
+//                 className="w-40 h-40 pointer-events-none border rounded-lg"
+//                 src={image}
+//                 alt="images"
+//               />
+//             </div>
+//           </SortableItem>
+//         ))}
+//         <Dropzone onDrop={onDrop}>
+//           {({ getRootProps, getInputProps }) => (
+//             <div className="text-center border p-10 flex flex-col items-center justify-center" {...getRootProps()}>
+//               <input {...getInputProps()} />
+//               <IoIosImages size={30} color="#007bff" />
+//               <p>Add Images</p>
+//             </div>
+//           )}
+//         </Dropzone>
+//       </SortableList>
+//       {/* </div> */}
+//     </div>
+//   );
+// };
+
+
+// // return (
+// //   <div className="container mx-auto bg-base-300 rounded-lg shadow-lg p-10 m-10 py-15 w-full">
+// //     {showGalleryText && (
+// //       <h1 className="text-2xl font-bold mb-4 text-start ml-3 border-spacing-y-80">Gallery</h1>
+// //     )}
+// //     <div className="flex justify-between border-spacing-x-5 items-center mb-4">
+// //       <div>
+// //         {selectedItems.length > 0 && (
+// //           <div className="flex items-center text-lg font-bold">
+// //             <FaCheckSquare className="text-blue-600 borrder mx-3" />
+// //             {selectedItems.length} Files Selected
+// //           </div>
+// //         )}
+// //       </div>
+// //       {selectedItems.length > 0 && (
+// //         <button onClick={onDelete} className="text-red-600 font-bold">
+// //           Delete Files
+// //         </button>
+// //       )}
+// //     </div>
+// //     <div className="grid grid-cols-1 lg:grid-cols-2 sm:grid-cols-2 pb-5 gap-2">
+// //       <div className="lg:col-span-1">
+// //         <SortableList
+// //           onSortEnd={onSortEnd}
+// //           className="flex flex-auto"
+// //           draggedItemClassName="shadow-md p-2 m-2 cursor-grab border"
+// //         >
+// //            {items.slice(0, 1).map(({ id, image, selected }) => (
+// //             <SortableItem key={id}>
+// //               <div className="relative cursor-pointer">
+// //                 <input
+// //                   type="checkbox"
+// //                   checked={selected}
+// //                   onChange={() => toggleSelect(id)}
+// //                   className="absolute w-5 top-0 left-0 mt-2 ml-2 z-10"
+// //                 />
+// //                 <img
+// //                   className="w-80 h-80 pointer-events-none border rounded-lg"
+// //                   src={image}
+// //                   alt="images"
+// //                 />
+// //               </div>
+// //             </SortableItem>
+// //           ))} 
+// //         </SortableList>
+// //       </div>
+// //       <div className="lg:col-span-1">
+// //         <SortableList
+// //           onSortEnd={onSortEnd}
+// //           className="grid grid-cols-3 gap-4"
+// //           draggedItemClassName="shadow-md p-2 m-2 cursor-pointer border"
+// //         >
+// //           {items.slice(1, 7).map(({ id, image, selected }) => (
+// //             <SortableItem key={id}>
+// //               <div className="relative cursor-pointer">
+// //                 <input
+// //                   type="checkbox"
+// //                   checked={selected}
+// //                   onChange={() => toggleSelect(id)}
+// //                   className="absolute w-5 top-0 left-0 mt-2 ml-2 z-10"
+// //                 />
+// //                 <img
+// //                   className="w-40 h-40 pointer-events-none border rounded-lg"
+// //                   src={image}
+// //                   alt="images"
+// //                 />
+// //               </div>
+// //             </SortableItem>
+// //             ))}
+// //         </SortableList>
+// //       </div>
+// //     </div>
+// //     <SortableList
+// //       onSortEnd={onSortEnd}
+// //       className="grid grid-cols-5 gap-4"
+// //       draggedItemClassName="shadow-md p-2 m-2 cursor-pointer border"
+// //     >
+// //       {items.slice(7).map(({ id, image, selected }) => (
+// //         <SortableItem key={id}>
+// //           <div className="relative cursor-pointer">
+// //           <label className="absolute top-2 after:hover:visible left-2 cursor-pointer">
+
+// //             <input
+// //               type="checkbox"
+// //               checked={selected}
+// //               onChange={() => toggleSelect(id)}
+// //               className="absolute w-5 top-0 left-0 mt-2 ml-2 z-10 "
+
+// //             />
+// //           </label>
+// //             <img
+// //               className="w-40 hover:visible h-40 pointer-events-none border rounded-lg"
+// //               src={image}
+// //               alt="images"
+// //             />
+// //           </div>
+// //         </SortableItem>
+// //       ))}
+// //     <Dropzone onDrop={onDrop}>
+// //       {({ getRootProps, getInputProps }) => (
+// //         <div className="text-center border flex flex-auto items-center justify-center" {...getRootProps()}>
+// //           <input {...getInputProps()} />
+// //           <IoIosImages size={30} color="#007bff" />
+// //           <p>Add Images</p>
+// //         </div>
+// //       )}
+// //     </Dropzone>
+// //     </SortableList>
+// //   </div>
+// // );
+// // };
+
+// export default ImageGallery;
+
+
+/************************************/
+/// grid code////
+// import React, { useState } from "react";
+// import SortableList, { SortableItem } from "react-easy-sort";
+// import image1 from "../../images/image-1.webp";
+// import image2 from "../../images/image-2.webp";
+// import image3 from "../../images/image-3.webp";
+// import image4 from "../../images/image-4.webp";
+// import image5 from "../../images/image-5.webp";
+// import image6 from "../../images/image-6.webp";
+// import image7 from "../../images/image-7.webp";
+// import image8 from "../../images/image-8.webp";
+// import image9 from "../../images/image-9.webp";
+// import image10 from "../../images/image-10.jpeg";
+// import image11 from "../../images/image-11.jpeg";
+// import { FaCheckSquare } from 'react-icons/fa';
+// import { IoIosImages } from 'react-icons/io';
+// import Dropzone from "react-dropzone";
+// import './ImageGallery.css';
+
+// const ImageGallery = () => {
+//   const [items, setItems] = useState([
+//     { id: '1', image: image1, selected: false },
+//     { id: '2', image: image2, selected: false },
+//     { id: '3', image: image3, selected: false },
+//     { id: '4', image: image4, selected: false },
+//     { id: '5', image: image5, selected: false },
+//     { id: '6', image: image6, selected: false },
+//     { id: '7', image: image7, selected: false },
+//     { id: '8', image: image8, selected: false },
+//     { id: '9', image: image9, selected: false },
+//     { id: '10', image: image10, selected: false },
+//     { id: '11', image: image11, selected: false },
+//   ]);
+
+//   const [selectedItems, setSelectedItems] = useState([]);
+//   const [selectAll, setSelectAll] = useState(false);
+
+//   const toggleSelect = (id) => {
+//     const updatedItems = items.map((item) =>
+//       item.id === id ? { ...item, selected: !item.selected } : item
+//     );
+//     setItems(updatedItems);
+//     setSelectedItems(updatedItems.filter((item) => item.selected));
+//     setSelectAll(updatedItems.every((item) => item.selected));
+//   };
+
+//   const handleSelectAll = () => {
+//     const selectAllValue = !selectAll;
+//     setSelectAll(selectAllValue);
+//     const updatedItems = items.map((item) => ({ ...item, selected: selectAllValue }));
+//     setItems(updatedItems);
+//     setSelectedItems(selectAllValue ? items : []);
+//   };
+
+//   const onDrop = (acceptedFiles) => {
+//     const newItems = acceptedFiles.map((file) => ({
+//       id: String(Date.now()),
+//       image: URL.createObjectURL(file),
+//       selected: false,
+//     }));
+//     setItems([...items, ...newItems]);
+//   };
+
+//   const onDelete = () => {
+//     const filteredImages = items.filter((img) => !img.selected);
+//     setItems(filteredImages);
+//     setSelectedItems([]);
+//   };
+
+//   const onSortEnd = (oldIndex, newIndex) => {
+//     const newItems = [...items];
+//     const [movedItem] = newItems.splice(oldIndex, 1);
+//     newItems.splice(newIndex, 0, movedItem);
+//     setItems(newItems);
+//   };
+
+//   const showGalleryText = selectedItems.length === 0;
+
+//   return (
+//     <div className="container mx-auto bg-base-100 rounded-lg shadow-2xl p-10 m-10 py-15 w-full">
+//       {showGalleryText && (
+//         <h1 className="text-2xl font-bold mb-4 text-start ml-3 border-spacing-y-80">Gallery</h1>
+//       )}
+//       <div className="flex justify-between border-spacing-x-5 items-center mb-4">
+//         <div>
+//           {selectedItems.length > 0 && (
+//             <div className="flex items-center text-lg font-bold">
+//               <FaCheckSquare className="text-blue-600 borrder mx-3" />
+//               {selectedItems.length} Files Selected
+//             </div>
+//           )}
+//         </div>
+//         {selectedItems.length > 0 && (
+//           <button onClick={onDelete} className="text-red-600 font-bold">
+//             Delete Files
+//           </button>
+//         )}
+//       </div>
+//       <SortableList
+//         onSortEnd={onSortEnd}
+//         className="grid grid-cols-4 gap-4"
+//         draggedItemClassName="shadow-md p-2 m-2 cursor-pointer border"
+//       >
+//         {items.map(({ id, image, selected }) => (
+//           <SortableItem key={id}>
+//             <div className="relative cursor-grab">
+//               <input
+//                 type="checkbox"
+//                 checked={selected}
+//                 onChange={() => toggleSelect(id)}
+//                 className="absolute w-5 top-0 left-0 mt-2 ml-2 z-10"
+//               />
+//               <img
+//                 className="w-40 h-40 pointer-events-none border rounded-lg"
+//                 src={image}
+//                 alt="images"
+//               />
+//             </div>
+//           </SortableItem>
+//         ))}
+//         <Dropzone onDrop={onDrop}>
+//           {({ getRootProps, getInputProps }) => (
+//             <div className="text-center border p-10 flex flex-col items-center justify-center" {...getRootProps()}>
+//               <input {...getInputProps()} />
+//               <IoIosImages size={30} color="#007bff" />
+//               <p>Add Images</p>
+//             </div>
+//           )}
+//         </Dropzone>
+//       </SortableList>
+//     </div>
+//   );
+// };
+
+// export default ImageGallery;
+
+/**********************************************/
+//////Awesome Code//////
+
 import React, { useState } from "react";
 import SortableList, { SortableItem } from "react-easy-sort";
 import image1 from "../../images/image-1.webp";
@@ -314,7 +707,6 @@ const ImageGallery = () => {
 
   const showGalleryText = selectedItems.length === 0;
 
-
   return (
     <div className="container mx-auto bg-base-100 rounded-lg shadow-2xl p-10 m-10 py-15 w-full">
       {showGalleryText && (
@@ -335,29 +727,82 @@ const ImageGallery = () => {
           </button>
         )}
       </div>
-      <SortableList
-        onSortEnd={onSortEnd}
-        className="flex flex-wrap"
-        draggedItemClassName="shadow-md p-2 m-2 cursor-grab border"
-      >
-        {items.map(({ id, image, selected }) => (
-          <SortableItem key={id}>
-
-            <div className="relative flex flex-shrink-0 m-3 cursor-grab">
-              <input
-                type="checkbox"
-                checked={selected}
-                onChange={() => toggleSelect(id)}
-                className="absolute w-5 top-0 left-0 mt-2 ml-2 z-10"
-              />
-              <img
-                className="w-40 h-40 pointer-events-none border rounded-lg"
-                src={image}
-                alt="images"
-              />
-            </div>
-          </SortableItem>
-        ))}
+      <div className="grid grid-cols-2 gap-4">
+        <div className="lg:col-span-1">
+          <SortableList
+            onSortEnd={onSortEnd}
+            className="grid grid-cols-1 gap-4"
+            draggedItemClassName="shadow-md p-2 m-2 cursor-grab border"
+          >
+            {items.slice(0, 1).map(({ id, image, selected }) => (
+              <SortableItem key={id}>
+                <div className="relative cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={selected}
+                    onChange={() => toggleSelect(id)}
+                    className="absolute w-5 top-0 left-0 mt-2 ml-2 z-10"
+                  />
+                  <img
+                    className="w-full h-auto pointer-events-none border rounded-lg"
+                    src={image}
+                    alt="images"
+                  />
+                </div>
+              </SortableItem>
+            ))}
+          </SortableList>
+        </div>
+        <div className="lg:col-span-1">
+          <SortableList
+            onSortEnd={onSortEnd}
+            className="grid grid-cols-2 gap-4"
+            draggedItemClassName="shadow-md p-2 m-2 cursor-pointer border"
+          >
+            {items.slice(1, 7).map(({ id, image, selected }) => (
+              <SortableItem key={id}>
+                <div className="relative cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={selected}
+                    onChange={() => toggleSelect(id)}
+                    className="absolute w-5 top-0 left-0 mt-2 ml-2 z-10"
+                  />
+                  <img
+                    className="w-full h-auto pointer-events-none border rounded-lg"
+                    src={image}
+                    alt="images"
+                  />
+                </div>
+              </SortableItem>
+            ))}
+          </SortableList>
+        </div>
+      </div>
+      <div className="grid grid-cols-2 gap-4">
+        <SortableList
+          onSortEnd={onSortEnd}
+          className="grid grid-cols-1 gap-4"
+          draggedItemClassName="shadow-md p-2 m-2 cursor-pointer border"
+        >
+          {items.slice(7).map(({ id, image, selected }) => (
+            <SortableItem key={id}>
+              <div className="relative cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={selected}
+                  onChange={() => toggleSelect(id)}
+                  className="absolute w-5 top-0 left-0 mt-2 ml-2 z-10"
+                />
+                <img
+                  className="w-full h-auto pointer-events-none border rounded-lg"
+                  src={image}
+                  alt="images"
+                />
+              </div>
+            </SortableItem>
+          ))}
+        </SortableList>
         <Dropzone onDrop={onDrop}>
           {({ getRootProps, getInputProps }) => (
             <div className="text-center border p-10 flex flex-col items-center justify-center" {...getRootProps()}>
@@ -367,129 +812,13 @@ const ImageGallery = () => {
             </div>
           )}
         </Dropzone>
-      </SortableList>
-
+      </div>
     </div>
   );
 };
 
-
-// return (
-//   <div className="container mx-auto bg-base-300 rounded-lg shadow-lg p-10 m-10 py-15 w-full">
-//     {showGalleryText && (
-//       <h1 className="text-2xl font-bold mb-4 text-start ml-3 border-spacing-y-80">Gallery</h1>
-//     )}
-//     <div className="flex justify-between border-spacing-x-5 items-center mb-4">
-//       <div>
-//         {selectedItems.length > 0 && (
-//           <div className="flex items-center text-lg font-bold">
-//             <FaCheckSquare className="text-blue-600 borrder mx-3" />
-//             {selectedItems.length} Files Selected
-//           </div>
-//         )}
-//       </div>
-//       {selectedItems.length > 0 && (
-//         <button onClick={onDelete} className="text-red-600 font-bold">
-//           Delete Files
-//         </button>
-//       )}
-//     </div>
-//     <div className="grid grid-cols-1 lg:grid-cols-2 sm:grid-cols-2 pb-5 gap-2">
-//       <div className="lg:col-span-1">
-//         <SortableList
-//           onSortEnd={onSortEnd}
-//           className="flex flex-auto"
-//           draggedItemClassName="shadow-md p-2 m-2 cursor-grab border"
-//         >
-//            {items.slice(0, 1).map(({ id, image, selected }) => (
-//             <SortableItem key={id}>
-//               <div className="relative cursor-pointer">
-//                 <input
-//                   type="checkbox"
-//                   checked={selected}
-//                   onChange={() => toggleSelect(id)}
-//                   className="absolute w-5 top-0 left-0 mt-2 ml-2 z-10"
-//                 />
-//                 <img
-//                   className="w-80 h-80 pointer-events-none border rounded-lg"
-//                   src={image}
-//                   alt="images"
-//                 />
-//               </div>
-//             </SortableItem>
-//           ))} 
-//         </SortableList>
-//       </div>
-//       <div className="lg:col-span-1">
-//         <SortableList
-//           onSortEnd={onSortEnd}
-//           className="grid grid-cols-3 gap-4"
-//           draggedItemClassName="shadow-md p-2 m-2 cursor-pointer border"
-//         >
-//           {items.slice(1, 7).map(({ id, image, selected }) => (
-//             <SortableItem key={id}>
-//               <div className="relative cursor-pointer">
-//                 <input
-//                   type="checkbox"
-//                   checked={selected}
-//                   onChange={() => toggleSelect(id)}
-//                   className="absolute w-5 top-0 left-0 mt-2 ml-2 z-10"
-//                 />
-//                 <img
-//                   className="w-40 h-40 pointer-events-none border rounded-lg"
-//                   src={image}
-//                   alt="images"
-//                 />
-//               </div>
-//             </SortableItem>
-//             ))}
-//         </SortableList>
-//       </div>
-//     </div>
-//     <SortableList
-//       onSortEnd={onSortEnd}
-//       className="grid grid-cols-5 gap-4"
-//       draggedItemClassName="shadow-md p-2 m-2 cursor-pointer border"
-//     >
-//       {items.slice(7).map(({ id, image, selected }) => (
-//         <SortableItem key={id}>
-//           <div className="relative cursor-pointer">
-//           <label className="absolute top-2 after:hover:visible left-2 cursor-pointer">
-
-//             <input
-//               type="checkbox"
-//               checked={selected}
-//               onChange={() => toggleSelect(id)}
-//               className="absolute w-5 top-0 left-0 mt-2 ml-2 z-10 "
-
-//             />
-//           </label>
-//             <img
-//               className="w-40 hover:visible h-40 pointer-events-none border rounded-lg"
-//               src={image}
-//               alt="images"
-//             />
-//           </div>
-//         </SortableItem>
-//       ))}
-//     <Dropzone onDrop={onDrop}>
-//       {({ getRootProps, getInputProps }) => (
-//         <div className="text-center border flex flex-auto items-center justify-center" {...getRootProps()}>
-//           <input {...getInputProps()} />
-//           <IoIosImages size={30} color="#007bff" />
-//           <p>Add Images</p>
-//         </div>
-//       )}
-//     </Dropzone>
-//     </SortableList>
-//   </div>
-// );
-// };
-
 export default ImageGallery;
 
-
-/************************************/
 
 // import React, { useState } from "react";
 // import SortableList, { SortableItem } from "react-easy-sort";
