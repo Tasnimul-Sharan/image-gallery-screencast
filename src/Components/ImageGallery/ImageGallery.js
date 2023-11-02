@@ -744,7 +744,7 @@ const ImageGallery = () => {
                     className="absolute w-5 top-0 left-0 mt-2 ml-2 z-10"
                   />
                   <img
-                    className="w-full h-auto pointer-events-none border rounded-lg"
+                    className="w-full h-min pointer-events-none border rounded-lg"
                     src={image}
                     alt="images"
                   />
@@ -756,7 +756,7 @@ const ImageGallery = () => {
         <div className="lg:col-span-1">
           <SortableList
             onSortEnd={onSortEnd}
-            className="grid grid-cols-2 gap-4"
+            className="grid grid-cols-3 gap-4"
             draggedItemClassName="shadow-md p-2 m-2 cursor-pointer border"
           >
             {items.slice(1, 7).map(({ id, image, selected }) => (
@@ -782,10 +782,10 @@ const ImageGallery = () => {
       <div className="grid grid-cols-2 gap-4">
         <SortableList
           onSortEnd={onSortEnd}
-          className="grid grid-cols-1 gap-4"
+          className="grid grid-cols-5 gap-4"
           draggedItemClassName="shadow-md p-2 m-2 cursor-pointer border"
         >
-          {items.slice(7).map(({ id, image, selected }) => (
+          {items.slice(7, 11).map(({ id, image, selected }) => (
             <SortableItem key={id}>
               <div className="relative cursor-pointer">
                 <input
