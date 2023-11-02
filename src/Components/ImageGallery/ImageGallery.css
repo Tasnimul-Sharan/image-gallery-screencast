@@ -1,4 +1,4 @@
-.image-gallery {
+/* .image-gallery {
     display: flex;
     justify-content: center;
   }
@@ -16,6 +16,40 @@
   }
   
   .image-container.featured {
-    transform: scale(1.2); /* Make the featured image larger */
+    transform: scale(1.2); 
   }
-  
+   */
+
+   .image-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Styles for the checkbox */
+  .checkbox {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 4px;
+    opacity: 0; /* Initially hidden */
+    z-index: 10;
+    cursor: pointer;
+  }
+
+  /* Styles for the image */
+  .image {
+    width: 80px; /* Adjust the size as needed */
+    height: 80px; /* Adjust the size as needed */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease; /* Add a transition effect for the shadow */
+  }
+
+  /* Show the checkbox and apply a shadow on image hover */
+  .image-container:hover .checkbox {
+    opacity: 1; /* Show the checkbox on hover */
+  }
+
+  .image-container:hover .image {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Apply a shadow on hover */
+  }
