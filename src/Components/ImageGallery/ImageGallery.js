@@ -104,7 +104,7 @@ const ImageGallery = () => {
       .filter((_, index) => index === 0)
       .map(({ id, image, selected }) => (
         <SortableItem key={id}>
-          <div className={`relative m-2 cursor-pointer big-image md:ml-10`}>
+          <div className={`m-2 cursor-pointer big-image md:ml-10`}>
             <label className="image-container ">
               <input
                 type="checkbox"
@@ -113,7 +113,7 @@ const ImageGallery = () => {
                 className={`checkbox ${selected ? "checkbox-hidden" : ""}`}
               />
               <img
-                className="w-40 h-40 pointer-events-none border rounded-lg"
+                className="pointer-events-none border rounded-lg"
                 src={image}
                 alt="images"
               />
@@ -146,7 +146,7 @@ const ImageGallery = () => {
      ) )}
     </div>
     </div>
-    <div className="grid grid-cols-5 gap-3 lg:mr-5">
+    <div className="grid lg:grid-cols-5 gap-3 lg:mr-5">
     {items
       .filter((_, index) => index > 0 && index > 6)
       .map(({ id, image, selected }) => (
