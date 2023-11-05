@@ -1,7 +1,7 @@
-# Getting Started with Create React App
+# Image Gallery Screencast
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+- live url : [https://image-gallery-screencast.vercel.app/](https://image-gallery-screencast.vercel.app/).
+  
 ## Available Scripts
 
 In the project directory, you can run:
