@@ -25,7 +25,6 @@
   display: block;
 }
 
-
 .image-container:hover .checkbox {
   display: block;
 }
@@ -42,4 +41,11 @@
 .big-image img {
   width: 70%; 
   height: 70%;
+}
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 10px;
 }
