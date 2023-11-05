@@ -180,7 +180,7 @@ const ImageGallery = () => {
           <Dropzone onDrop={onDrop}>
             {({ getRootProps, getInputProps }) => (
               <div
-                className="text-center border border-dashed p-4 md:p-10 flex flex-col items-center justify-center"
+                className="text-center border cursor-pointer border-dashed p-4 md:p-10 flex flex-col items-center justify-center"
                 {...getRootProps()}
               >
                 <input {...getInputProps()} />
